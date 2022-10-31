@@ -1,0 +1,371 @@
+base-command: "mobcoins"
+description: "Base mobcoins command"
+aliases:
+    - "coins"
+
+currency-type: "SOLID" #Types: SOLID, DECIMAL
+
+sub-commands:
+    give: true
+    take: true
+    set: true
+    pay: true
+    balance: true
+    paytoggle: true
+    top: true
+    event: true
+    shop: true
+    help: true
+
+event-settings:
+    gain-multiplier: 1.5
+    start-message:
+        sound:
+            enabled: true
+            value: "LEVEL_UP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&a1.5x Mob Coins Multiplier has been started!"
+    end-message:
+        sound:
+            enabled: true
+            value: "LEVEL_UP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c1.5x Mob Coins Multiplier has ended!"
+mobs:
+    enabled: true
+    rewards:
+        - "ZOMBIE;1;5;50" #Mob, Min coins, Max coins, Chance
+
+blocks:
+    enabled: false
+    rewards:
+        - "STONE;1;5;50" #Block, Min coins, Max coins, Chance
+
+on-exp-level-up:
+    enabled: false
+    min: 1
+    max: 5
+    chance: 10
+
+on-exp-gain:
+    enabled: false
+    min: 1
+    max: 5
+    chance: 10
+
+player-kill:
+    enabled: false
+    min: 1 #% of victims balance
+    max: 5 #% of victims balance
+    chance: 100
+
+menus:
+    "main-menu":
+        title: "&8&lCATEGORIES"
+        rows: 3
+        borders:
+            "gray":
+                material: "GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: [ ]
+                slots:
+                    - "0-26"
+        categories:
+            "static":
+                slot: 12
+                open:
+                    material: "LIME_DYE"
+                    name: "&aStatic Shop &7(Open)"
+                    lore: [ ]
+                closed:
+                    material: "RED_DYE"
+                    name: "&cStatic Shop &7(Closed)"
+                    lore: [ ]
+            "rotating":
+                slot: 14
+                open:
+                    material: "LIME_DYE"
+                    name: "&aRotating Shop &7(Open)"
+                    lore: [ ]
+                closed:
+                    material: "RED_DYE"
+                    name: "&cRotating Shop &7(Closed)"
+                    lore: [ ]
+shops:
+    "static":
+        title: "&8&lSTATIC"
+        rows: 3
+        borders:
+            "gray":
+                material: "GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: [ ]
+                slots:
+                    - "0-26"
+        open-time: "1/28/2022 17:30:00"
+        rotating: false
+        items:
+            "diamond":
+                slot: 13
+                price: 10
+                material: "DIAMOND"
+                name: "&bDiamond &7(10 coins)"
+                lore: []
+                commands:
+                    - "give %player% diamond 1"
+    "rotating":
+        title: "&8&lROTATING"
+        rows: 3
+        borders:
+            "gray":
+                material: "GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: [ ]
+                slots:
+                    - "0-26"
+            "light_gray":
+                material: "LIGHT_GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: [ ]
+                slots:
+                    - "10-16"
+        open-time: "1/28/2022 17:30:00"
+        rotating: true
+        rotating-time: 30 #In Seconds
+        item-slots: [10,11,12,13,14,15,16]
+        items:
+            "diamond":
+                price: 10
+                material: "DIAMOND"
+                name: "&bDiamond &7(10 coins)"
+                lore: []
+                commands:
+                    - "give %player% diamond 1"
+            "emerald":
+                price: 10
+                material: "EMERALD"
+                name: "&aEmerald &7(10 coins)"
+                lore: []
+                commands:
+                    - "give %player% emerald 1"
+        rotating-item:
+            slot: 18
+            material: "CLOCK"
+            name: "&eRotating in &f%time%&e."
+            lore: []
+
+messages:
+    "admin-help":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&3&m-------------------------------------"
+                - " "
+                - "&b&lAbyss&3&lCurrency &8&l┃ &bMobcoin Help"
+                - "&7&oCoded and configured by &f&oRelocation#0001&7&o."
+                - " "
+                - "&7&o<> = Required"
+                - "&7&o[] = Optional"
+                - " "
+                - "&3&lADMIN COMMANDS:"
+                - "&3&l» &b/mobcoins give <player> <amount>"
+                - "&3&l» &b/mobcoins take <player> <amount>"
+                - "&3&l» &b/mobcoins set <player> <amount>"
+                - "&3&l» &b/mobcoins event"
+                - " "
+                - "&3&lPLAYER COMMANDS:"
+                - "&3&l» &b/mobcoins pay <player> <amount>"
+                - "&3&l» &b/mobcoins balance [player]"
+                - "&3&l» &b/mobcoins paytoggle"
+                - "&3&l» &b/mobcoins top"
+                - "&3&l» &b/mobcoins shop"
+                - " "
+                - "&3&m-------------------------------------"
+    "player-help":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&3&m-------------------------------------"
+                - " "
+                - "&b&lAbyss&3&lCurrency &8&l┃ &bMobcoin Help"
+                - "&7&oCoded and configured by &f&oRelocation#0001&7&o."
+                - " "
+                - "&7&o<> = Required"
+                - "&7&o[] = Optional"
+                - " "
+                - "&3&lCOMMANDS:"
+                - "&3&l» &b/mobcoins pay <player> <amount>"
+                - "&3&l» &b/mobcoins balance [player]"
+                - "&3&l» &b/mobcoins paytoggle"
+                - "&3&l» &b/mobcoins top"
+                - "&3&l» &b/mobcoins shop"
+                - " "
+                - "&3&m-------------------------------------"
+    "given-admin":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have given &3%player% %amount%x&b mob coins."
+    "given-player":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have received &3%amount%x&b mob coins."
+    "balance":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have &3%amount%x&b mob coins."
+    "balance-other":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &3%player%&b has &3%amount%x&b mob coins."
+    "no-permission":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &cYou don't have permission to do this."
+    "not-enough":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &cYou don't have enough mob coins!"
+    "taken-admin":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have taken &3%amount%x&b mob coins from &3%player%&b.."
+    "taken-player":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have had &3%amount%x&b mob coins taken."
+    "set-admin":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have set &3%player%'s&b mob coins to &3%amount%x&b."
+    "set-player":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYour mob coins have been set to &3%amount%x&b."
+    "target-payments-toggled-off":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &4%player%&c has payments toggled off."
+    "paid":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou paid &3%player% %amount%x&b mob coins."
+    "received-payment":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have been paid &3%amount%x &bmob coins by &3%player%&b."
+    "payments-toggled-true":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou are now accepting mob coin payments."
+    "payments-toggled-false":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou are no longer accepting mob coin payments."

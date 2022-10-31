@@ -1,0 +1,4 @@
+storage:
+    type: "JSON" #JSON and MONGO - MySQL soon prob
+    database: ""
+    mongo-uri: ""

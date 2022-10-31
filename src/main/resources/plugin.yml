@@ -1,0 +1,11 @@
+name: AbyssCurrency
+version: '${project.version}'
+main: net.abyssdev.abysscurrency.AbyssCurrency
+api-version: 1.13
+depend:
+    - AbyssLib
+softdepend:
+    - PlaceholderAPI
+authors:
+    - Relocation
+website: https://abyssdev.net
