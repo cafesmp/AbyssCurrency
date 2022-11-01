@@ -43,29 +43,80 @@ mobs:
     enabled: true
     rewards:
         - "ZOMBIE;1;5;50" #Mob, Min coins, Max coins, Chance
+    message:
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have just gained &3%amount%x&b mob coins from killing a &3%mob%&b."
 
 blocks:
     enabled: false
     rewards:
         - "STONE;1;5;50" #Block, Min coins, Max coins, Chance
+    message:
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have just gained &3%amount%x&b mob coins from mining a &3%block%&b block."
 
 on-exp-level-up:
     enabled: false
     min: 1
     max: 5
     chance: 10
+    message:
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have just gained &3%amount%x&b mob coins from leveling up."
 
 on-exp-gain:
     enabled: false
     min: 1
     max: 5
     chance: 10
+    message:
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have just gained &3%amount%x&b mob coins from gaining exp."
 
 player-kill:
     enabled: false
-    min: 1 #% of victims balance
-    max: 5 #% of victims balance
+    min: 1
+    max: 5
     chance: 100
+    message:
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have just gained &3%amount%x&b mob coins from killing &3%player%&b."
+
 
 menus:
     "main-menu":

@@ -4,6 +4,7 @@ import net.abyssdev.abysscurrency.AbyssCurrency;
 import net.abyssdev.abysscurrency.currency.Currency;
 import net.abyssdev.abysscurrency.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysscurrency.player.data.PlayerCurrencyData;
+import net.abyssdev.abysscurrency.utils.format.FormatUtil;
 import net.abyssdev.abysslib.command.context.CommandContext;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
 import net.abyssdev.abysslib.utils.Utils;
@@ -58,9 +59,9 @@ public final class SetSubCommand extends CurrencySubCommand {
 
         this.currency.getMessageCache().sendMessage(sender, "messages.set-admin", new PlaceholderReplacer()
                 .addPlaceholder("%player%", target.getName())
-                .addPlaceholder("%amount%", Utils.format(this.currency.isSolid() ? (long) amount : amount)));
+                .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
 
         this.currency.getMessageCache().sendMessage(target, "messages.set-player", new PlaceholderReplacer()
-                .addPlaceholder("%amount%", Utils.format(this.currency.isSolid() ? (long) amount : amount)));
+                .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
     }
 }

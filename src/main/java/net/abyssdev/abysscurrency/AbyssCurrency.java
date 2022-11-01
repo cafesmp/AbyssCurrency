@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import lombok.Getter;
 import net.abyssdev.abysscurrency.currency.Currency;
 import net.abyssdev.abysscurrency.currency.registry.CurrencyRegistry;
+import net.abyssdev.abysscurrency.listeners.*;
 import net.abyssdev.abysscurrency.player.CurrencyPlayer;
 import net.abyssdev.abysscurrency.player.storage.PlayerJsonStorage;
 import net.abyssdev.abysscurrency.player.storage.PlayerMongoStorage;
@@ -53,6 +54,12 @@ public final class AbyssCurrency extends AbyssPlugin {
         }
 
         this.loadCurrencies();
+
+        new EntityDeathListener(this);
+        new BreakListener(this);
+        new KillListener(this);
+        new ExpGainListener(this);
+        new ExpLevelUpListener(this);
     }
 
     @Override

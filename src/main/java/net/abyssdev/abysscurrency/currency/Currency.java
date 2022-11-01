@@ -56,6 +56,12 @@ public final class Currency {
             this.messageCache.loadMessage("messages." + key);
         }
 
+        this.messageCache.loadMessage("mobs.message");
+        this.messageCache.loadMessage("blocks.message");
+        this.messageCache.loadMessage("on-exp-level-up.message");
+        this.messageCache.loadMessage("on-exp-gain.message");
+        this.messageCache.loadMessage("player-kill.message");
+
         this.solid = this.config.getString("currency-type").equalsIgnoreCase("solid");
 
         this.command = new CurrencyCommand(plugin, this);

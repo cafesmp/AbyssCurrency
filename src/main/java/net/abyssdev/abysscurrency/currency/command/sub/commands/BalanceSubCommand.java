@@ -4,6 +4,7 @@ import net.abyssdev.abysscurrency.AbyssCurrency;
 import net.abyssdev.abysscurrency.currency.Currency;
 import net.abyssdev.abysscurrency.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysscurrency.player.CurrencyPlayer;
+import net.abyssdev.abysscurrency.utils.format.FormatUtil;
 import net.abyssdev.abysslib.command.context.CommandContext;
 import net.abyssdev.abysslib.logger.AbyssLogger;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
@@ -50,9 +51,7 @@ public final class BalanceSubCommand extends CurrencySubCommand {
             final CurrencyPlayer profile = this.plugin.getPlayerStorage().get(((Player) sender).getUniqueId());
 
             this.currency.getMessageCache().sendMessage(sender, "messages.balance", new PlaceholderReplacer()
-                    .addPlaceholder("%amount%", Utils.format(this.currency.isSolid()
-                            ? (long) profile.getBalance(this.currency)
-                            : profile.getBalance(this.currency))));
+                    .addPlaceholder("%amount%", FormatUtil.format(this.currency, profile.getBalance(this.currency))));
             return;
         }
 
@@ -72,9 +71,7 @@ public final class BalanceSubCommand extends CurrencySubCommand {
 
                 this.currency.getMessageCache().sendMessage(sender, "messages.balance-other", new PlaceholderReplacer()
                         .addPlaceholder("%player%", player.getName())
-                        .addPlaceholder("%amount%", Utils.format(this.currency.isSolid()
-                                ? (long) profile.getBalance(this.currency)
-                                : profile.getBalance(this.currency))));
+                        .addPlaceholder("%amount%", FormatUtil.format(this.currency, profile.getBalance(this.currency))));
             });
         });
     }
