@@ -3,6 +3,10 @@ description: "Base mobcoins command"
 aliases:
     - "coins"
 
+top:
+    enabled: true
+    update-time: 60
+
 currency-type: "SOLID" #Types: SOLID, DECIMAL
 
 sub-commands:
@@ -16,6 +20,7 @@ sub-commands:
     event: true
     shop: true
     help: true
+    recalc: true
 
 event-settings:
     gain-multiplier: 1.5
@@ -150,6 +155,35 @@ menus:
                     material: "RED_DYE"
                     name: "&cRotating Shop &7(Closed)"
                     lore: [ ]
+    "top-menu":
+        title: "&8&lCOINS TOP"
+        rows: 3
+        top-slots: [10,11,12,13,14,15,16]
+        borders:
+            "gray":
+                material: "GRAY_STAINED_GLASS_PANE"
+                name: " "
+                lore: [ ]
+                slots:
+                    - "0-26"
+        invalid-item:
+            material: "PLAYER_HEAD"
+            skull: "MHF_Question"
+            name: "&c???"
+            lore: [ ]
+        valid-item:
+            material: "PLAYER_HEAD"
+            skull: "%player%"
+            name: "&3&l[&b&l!&3&l] &b%player% &7(#%rank%)"
+            lore:
+                - "&7&o(( &f&o%player%&7&o has &f&o%amount%x&7&o coins! ))"
+        stats-item:
+            slot: 26
+            material: "PLAYER_HEAD"
+            skull: "%player%"
+            name: "&3&l[&b&l!&3&l] &b%player% &7(#%rank%)"
+            lore:
+                - "&7&o(( You currently have &f&o%amount%x&7&o coins! ))"
 shops:
     "static":
         title: "&8&lSTATIC"
@@ -420,3 +454,63 @@ messages:
             enabled: true
             value:
                 - "&b&lAbyss &8- &bYou are no longer accepting mob coin payments."
+    "event-toggled-true":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have enabled the &31.5x Coin Event&b."
+    "event-toggled-false":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have disabled the &31.5x Coin Event&b."
+    "event-true":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bA &31.5x Coin Event&b has begun!"
+    "event-false":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bA &31.5x Coin Event&b has ended!"
+    "top-updating":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bCoins top is now updating!"
+    "top-updated":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bCoins top has updated in &3%time%ms&b."

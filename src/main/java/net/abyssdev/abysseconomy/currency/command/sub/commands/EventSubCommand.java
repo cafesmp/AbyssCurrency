@@ -1,0 +1,45 @@
+package net.abyssdev.abysseconomy.currency.command.sub.commands;
+
+import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.currency.Currency;
+import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
+import net.abyssdev.abysslib.command.context.CommandContext;
+import org.bukkit.command.CommandSender;
+import org.eclipse.collections.api.factory.Sets;
+
+import java.util.Set;
+
+/**
+ * The event sub command
+ * @author Relocation
+ */
+public final class EventSubCommand extends CurrencySubCommand {
+
+    private final Set<String> aliases = Sets.immutable.of("event").castToSet();
+
+    /**
+     * Constructs a new EventSubCommand
+     * @param plugin The abyss economy plugin
+     */
+    public EventSubCommand(final AbyssEconomy plugin, final Currency currency) {
+        super(plugin, currency,0, currency.getConfig().getBoolean("sub-commands.event"), "admin-help");
+    }
+
+    @Override
+    public Set<String> aliases() {
+        return this.aliases;
+    }
+
+    @Override
+    public void execute(final CommandContext<?> context) {
+        final CommandSender sender = context.getSender();
+
+        if (!sender.hasPermission("abysseconomy.admin")) {
+            this.currency.getMessageCache().sendMessage(sender, "messages.no-permission");
+            return;
+        }
+
+        this.currency.toggleEvent();
+        this.currency.getMessageCache().sendMessage(sender, "messages.event-toggled-" + this.currency.isEvent());
+    }
+}

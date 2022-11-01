@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.abyssdev</groupId>
-    <artifactId>AbyssCurrency</artifactId>
+    <artifactId>AbyssEconomy</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>AbyssCurrency</name>
+    <name>AbyssEconomy</name>
 
     <description>Create unlimited currencies</description>
     <properties>
@@ -40,7 +40,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>AbyssCurrency-PRE</finalName>
+                            <finalName>AbyssEconomy-PRE</finalName>
                             <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
