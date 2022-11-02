@@ -13,6 +13,8 @@ public final class CategoryItem {
     private final int slot;
 
     public CategoryItem(final FileConfiguration config, final String path, final String name) {
+
+        System.out.println(config.contains(path ));
         this.openItem = new ItemBuilder(config, path + ".open").parse();
         this.closedItem = new ItemBuilder(config, path + ".closed").parse();
         this.slot = config.getInt(path + ".slot");

@@ -42,6 +42,6 @@ public final class ShopSubCommand extends CurrencySubCommand {
             return;
         }
 
-        this.currency.getTopMenu().open((Player) sender);
+        this.currency.getCategoryMenu().open((Player) sender);
     }
 }

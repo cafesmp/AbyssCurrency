@@ -6,6 +6,7 @@ import net.abyssdev.abysseconomy.AbyssEconomy;
 import net.abyssdev.abysseconomy.currency.command.CurrencyCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.commands.*;
+import net.abyssdev.abysseconomy.menu.CategoryMenu;
 import net.abyssdev.abysseconomy.menu.TopMenu;
 import net.abyssdev.abysseconomy.shop.Shop;
 import net.abyssdev.abysseconomy.shop.registry.ShopRegistry;
@@ -36,8 +37,10 @@ public final class Currency {
     private final CurrencyCommand command;
     private final MessageCache messageCache;
 
-    private final Registry<String, Shop> shopRegistry;
+    private final CategoryMenu categoryMenu;
     private final TopMenu topMenu;
+
+    private final Registry<String, Shop> shopRegistry;
 
     private final boolean solid;
     private boolean event;
@@ -77,6 +80,7 @@ public final class Currency {
 
         this.shopRegistry = new ShopRegistry(plugin, this);
         this.topMenu = new TopMenu(plugin, this);
+        this.categoryMenu = new CategoryMenu(plugin, this);
 
         this.command = new CurrencyCommand(plugin, this);
         this.command.register();
@@ -91,7 +95,8 @@ public final class Currency {
                 new PayToggleSubCommand(plugin, this),
                 new EventSubCommand(plugin, this),
                 new TopSubCommand(plugin, this),
-                new RecalcSubCommand(plugin, this));
+                new RecalcSubCommand(plugin, this),
+                new ShopSubCommand(plugin, this));
 
         if (this.config.getBoolean("top.enabled")) {
             new TopUpdateTask(plugin, this, this.config.getInt("top.update-time") * 20L);

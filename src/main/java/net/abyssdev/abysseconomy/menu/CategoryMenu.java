@@ -14,12 +14,21 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Category menu
+ * @author Relocation
+ */
 public final class CategoryMenu extends AbyssMenu {
 
     private final AbyssEconomy plugin;
     private final Currency currency;
     private final CategoryItem[] categories;
 
+    /**
+     * Constructs a new CategoryMenu
+     * @param plugin The abyss economy plugin
+     * @param currency The currency
+     */
     public CategoryMenu(final AbyssEconomy plugin, final Currency currency) {
         super(currency.getConfig(), "menus.main-menu.");
 
@@ -34,7 +43,7 @@ public final class CategoryMenu extends AbyssMenu {
         int index = 0;
 
         for (final String key : currency.getConfig().getConfigurationSection("menus.main-menu.categories").getKeys(false)) {
-            this.categories[index] = new CategoryItem(currency.getConfig(), "categories." + key, key);
+            this.categories[index] = new CategoryItem(currency.getConfig(), "menus.main-menu.categories." + key, key);
             index++;
         }
 

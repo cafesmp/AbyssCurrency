@@ -1,5 +1,5 @@
 name: AbyssEconomy
-version: '${project.version}'
+version: '1.0.0'
 main: net.abyssdev.abysseconomy.AbyssEconomy
 api-version: 1.13
 depend:

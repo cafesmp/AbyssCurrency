@@ -269,6 +269,7 @@ messages:
                 - "&3&l» &b/mobcoins give <player> <amount>"
                 - "&3&l» &b/mobcoins take <player> <amount>"
                 - "&3&l» &b/mobcoins set <player> <amount>"
+                - "&3&l» &b/mobcoins recalc"
                 - "&3&l» &b/mobcoins event"
                 - " "
                 - "&3&lPLAYER COMMANDS:"
