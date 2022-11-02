@@ -1,8 +1,11 @@
 package net.abyssdev.abysseconomy.currency.command.sub.commands;
 
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.events.CurrencyGainEvent;
+import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
+import net.abyssdev.abysseconomy.player.CurrencyPlayer;
 import net.abyssdev.abysseconomy.utils.format.FormatUtil;
 import net.abyssdev.abysslib.command.context.CommandContext;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
@@ -50,7 +53,9 @@ public final class GiveSubCommand extends CurrencySubCommand {
             return;
         }
 
-        this.plugin.getPlayerStorage().get(target.getUniqueId()).addCurrency(this.currency, amount);
+        final CurrencyPlayer profile = this.plugin.getPlayerStorage().get(target.getUniqueId());
+
+        profile.addCurrency(this.currency, amount);
 
         this.currency.getMessageCache().sendMessage(sender, "messages.given-admin", new PlaceholderReplacer()
                 .addPlaceholder("%player%", target.getName())
@@ -58,5 +63,7 @@ public final class GiveSubCommand extends CurrencySubCommand {
 
         this.currency.getMessageCache().sendMessage(target, "messages.given-player", new PlaceholderReplacer()
                 .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
+
+        new CurrencyGainEvent(target, profile, CurrencyGainReason.COMMAND, amount).fire(this.plugin);
     }
 }

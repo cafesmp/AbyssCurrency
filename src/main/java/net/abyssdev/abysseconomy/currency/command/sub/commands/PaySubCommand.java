@@ -1,6 +1,8 @@
 package net.abyssdev.abysseconomy.currency.command.sub.commands;
 
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.events.CurrencyGainEvent;
+import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
@@ -81,5 +83,7 @@ public final class PaySubCommand extends CurrencySubCommand {
         this.currency.getMessageCache().sendMessage(target, "messages.received-payment", new PlaceholderReplacer()
                 .addPlaceholder("%player%", sender.getName())
                 .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
+
+        new CurrencyGainEvent(target, targetProfile, CurrencyGainReason.PAID, amount).fire(this.plugin);
     }
 }

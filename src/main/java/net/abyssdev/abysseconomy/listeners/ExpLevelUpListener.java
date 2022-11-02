@@ -1,6 +1,8 @@
 package net.abyssdev.abysseconomy.listeners;
 
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.events.CurrencyGainEvent;
+import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.currency.drop.CurrencyDrop;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
@@ -63,6 +65,8 @@ public final class ExpLevelUpListener extends AbyssListener<AbyssEconomy> {
 
             drop.getCurrency().getMessageCache().sendMessage(player, "on-exp-gain.message", new PlaceholderReplacer()
                     .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount)));
+
+            new CurrencyGainEvent(player, profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
 
     }
