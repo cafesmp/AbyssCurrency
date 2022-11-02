@@ -84,6 +84,6 @@ public final class PaySubCommand extends CurrencySubCommand {
                 .addPlaceholder("%player%", sender.getName())
                 .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
 
-        new CurrencyGainEvent(target, targetProfile, CurrencyGainReason.PAID, amount).fire(this.plugin);
+        new CurrencyGainEvent(target, this.currency, targetProfile, CurrencyGainReason.PAID, amount).fire(this.plugin);
     }
 }

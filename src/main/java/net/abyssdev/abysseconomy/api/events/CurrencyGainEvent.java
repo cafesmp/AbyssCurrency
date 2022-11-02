@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.abyssdev.abysseconomy.AbyssEconomy;
 import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
+import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -20,6 +21,7 @@ public final class CurrencyGainEvent extends Event {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
     private final Player player;
+    private final Currency currency;
     private final CurrencyPlayer profile;
     private final CurrencyGainReason reason;
     private final double amount;

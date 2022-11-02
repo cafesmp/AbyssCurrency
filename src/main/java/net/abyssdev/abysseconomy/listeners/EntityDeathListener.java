@@ -90,7 +90,7 @@ public final class EntityDeathListener extends AbyssListener<AbyssEconomy> {
                     .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
                     .addPlaceholder("%mob", WordUtils.formatText(entity.getType().name().replace("_", " "))));
 
-            new CurrencyGainEvent(player, profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
+            new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
 
     }

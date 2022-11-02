@@ -69,7 +69,7 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
                     .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
                     .addPlaceholder("%player%", player.getName()));
 
-            new CurrencyGainEvent(player, profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
+            new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
 
     }

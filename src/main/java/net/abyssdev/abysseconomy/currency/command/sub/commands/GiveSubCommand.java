@@ -64,6 +64,6 @@ public final class GiveSubCommand extends CurrencySubCommand {
         this.currency.getMessageCache().sendMessage(target, "messages.given-player", new PlaceholderReplacer()
                 .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
 
-        new CurrencyGainEvent(target, profile, CurrencyGainReason.COMMAND, amount).fire(this.plugin);
+        new CurrencyGainEvent(target, this.currency, profile, CurrencyGainReason.COMMAND, amount).fire(this.plugin);
     }
 }
