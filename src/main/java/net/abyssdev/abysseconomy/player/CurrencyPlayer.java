@@ -38,12 +38,9 @@ public final class CurrencyPlayer {
         return this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).getAmount() >= amount;
     }
 
-    public boolean togglePayments(final Currency currency) {
+    public void togglePayments(final Currency currency) {
         final PlayerCurrencyData data = this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData());
-
         data.setPaymentsToggled(!data.isPaymentsToggled());
-
-        return data.isPaymentsToggled();
     }
 
     public boolean isToggled(final Currency currency) {
