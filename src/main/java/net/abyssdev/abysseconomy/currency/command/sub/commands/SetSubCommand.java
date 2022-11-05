@@ -51,10 +51,7 @@ public final class SetSubCommand extends CurrencySubCommand {
             return;
         }
 
-        this.plugin.getPlayerStorage()
-                .get(target.getUniqueId()).getCurrencies()
-                .getOrDefault(this.currency.getName(), new PlayerCurrencyData())
-                .setAmount(amount);
+        this.plugin.getPlayerStorage().get(target.getUniqueId()).setCurrency(this.currency, amount);
 
         this.currency.getMessageCache().sendMessage(sender, "messages.set-admin", new PlaceholderReplacer()
                 .addPlaceholder("%player%", target.getName())

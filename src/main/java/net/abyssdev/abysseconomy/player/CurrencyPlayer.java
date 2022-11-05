@@ -26,6 +26,10 @@ public final class CurrencyPlayer {
         this.currencies.put(currency.getName(), this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).add(amount));
     }
 
+    public void setCurrency(final Currency currency, final double amount) {
+        this.currencies.put(currency.getName(), this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).set(amount));
+    }
+
     public void removeCurrency(final Currency currency, final double amount) {
         this.currencies.put(currency.getName(), this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).take(amount));
     }

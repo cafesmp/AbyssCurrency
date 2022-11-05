@@ -7,7 +7,6 @@ import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.utils.format.FormatUtil;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * The currency placeholder expansion
@@ -35,7 +34,6 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
 
     @Override
     public String onRequest(final OfflinePlayer player, @NotNull final String params) {
-
         if (!this.plugin.getCurrencyRegistry().containsKey(params)) {
             return "null";
         }
@@ -43,4 +41,5 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
         final Currency currency = this.plugin.getCurrencyRegistry().get(params).get();
         return FormatUtil.format(currency, this.plugin.getPlayerStorage().get(player.getUniqueId()).getBalance(currency));
     }
+
 }

@@ -24,4 +24,11 @@ public final class PlayerCurrencyData {
         this.amount -= amount;
         return this;
     }
+
+    public PlayerCurrencyData set(final double amount) {
+        this.amount = Math.max(0, amount);
+        return this;
+    }
+
+
 }
