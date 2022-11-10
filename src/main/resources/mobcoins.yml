@@ -21,6 +21,18 @@ sub-commands:
     shop: true
     help: true
     recalc: true
+    withdraw: true
+
+withdraw-item:
+    material: "PAPER"
+    enchanted: true
+    name: "&bMob Coin Note"
+    lore:
+        - " "
+        - "&7- &bAmount: &f%amount%x"
+        - "&7- &bWithdrawn by: &f%player%"
+        - " "
+        - "&7&o(( Right click to redeem! ))"
 
 event-settings:
     gain-multiplier: 1.5
@@ -274,6 +286,7 @@ messages:
                 - " "
                 - "&3&lPLAYER COMMANDS:"
                 - "&3&l» &b/mobcoins pay <player> <amount>"
+                - "&3&l» &b/mobcoins withdraw <amount>"
                 - "&3&l» &b/mobcoins balance [player]"
                 - "&3&l» &b/mobcoins paytoggle"
                 - "&3&l» &b/mobcoins top"
@@ -299,6 +312,7 @@ messages:
                 - " "
                 - "&3&lCOMMANDS:"
                 - "&3&l» &b/mobcoins pay <player> <amount>"
+                - "&3&l» &b/mobcoins withdraw <amount>"
                 - "&3&l» &b/mobcoins balance [player]"
                 - "&3&l» &b/mobcoins paytoggle"
                 - "&3&l» &b/mobcoins top"
@@ -545,3 +559,23 @@ messages:
             enabled: true
             value:
                 - "&b&lAbyss &8- &bCoins top has updated in &3%time%ms&b."
+    "withdrawn":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have withdrawn &3%amount%x &bmob coins."
+    "redeemed":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bYou have redeemed &3%amount%x&b mob coins."

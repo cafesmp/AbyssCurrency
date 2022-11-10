@@ -168,6 +168,7 @@ public final class AbyssEconomy extends AbyssPlugin {
         new KillListener(this);
         new ExpGainListener(this);
         new ExpLevelUpListener(this);
+        new InteractListener(this);
 
         new RotatingTask(this);
         new MultiplierEventTask(this);

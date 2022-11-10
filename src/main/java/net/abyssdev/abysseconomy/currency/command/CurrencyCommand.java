@@ -46,4 +46,5 @@ public final class CurrencyCommand extends Command<CommandSender> {
                         ? (long) profile.getBalance(this.currency)
                         : profile.getBalance(this.currency))));
     }
+
 }
