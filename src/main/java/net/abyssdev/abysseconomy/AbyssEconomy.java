@@ -10,6 +10,7 @@ import net.abyssdev.abysseconomy.placeholder.CurrencyPlaceholderExpansion;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
 import net.abyssdev.abysseconomy.player.storage.PlayerJsonStorage;
 import net.abyssdev.abysseconomy.player.storage.PlayerMongoStorage;
+import net.abyssdev.abysseconomy.tasks.MultiplierEventTask;
 import net.abyssdev.abysseconomy.tasks.RotatingTask;
 import net.abyssdev.abysslib.patterns.registry.Registry;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
@@ -169,6 +170,7 @@ public final class AbyssEconomy extends AbyssPlugin {
         new ExpLevelUpListener(this);
 
         new RotatingTask(this);
+        new MultiplierEventTask(this);
 
         if (this.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new CurrencyPlaceholderExpansion(this).register();

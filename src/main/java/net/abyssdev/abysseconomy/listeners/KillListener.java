@@ -62,7 +62,12 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
                 continue;
             }
 
-            final double amount = RandomUtils.minMax(drop.getMin(), drop.getMax());
+            double amount = RandomUtils.minMax(drop.getMin(), drop.getMax());
+
+            if (drop.getCurrency().getEvent().isActive()) {
+                amount *= drop.getCurrency().getEvent().getMultiplier();
+            }
+
             profile.addCurrency(drop.getCurrency(), amount);
 
             drop.getCurrency().getMessageCache().sendMessage(player, "player-kill.message", new PlaceholderReplacer()

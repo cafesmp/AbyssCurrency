@@ -270,7 +270,7 @@ messages:
                 - "&3&l» &b/mobcoins take <player> <amount>"
                 - "&3&l» &b/mobcoins set <player> <amount>"
                 - "&3&l» &b/mobcoins recalc"
-                - "&3&l» &b/mobcoins event"
+                - "&3&l» &b/mobcoins event [start|stop] [seconds]"
                 - " "
                 - "&3&lPLAYER COMMANDS:"
                 - "&3&l» &b/mobcoins pay <player> <amount>"
@@ -495,6 +495,36 @@ messages:
             enabled: true
             value:
                 - "&b&lAbyss &8- &bA &31.5x Coin Event&b has ended!"
+    "event-time":
+        sound:
+            enabled: true
+            value: "ORB_PICKUP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&b&lAbyss &8- &bThe &31.5x Coin Event&b has &3%time%&b left."
+    "event-already-started":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &cThis event has already begun!"
+    "event-already-stopped":
+        sound:
+            enabled: true
+            value: "FIZZ"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&c&lAbyss &8- &cThis event has already ended!"
     "top-updating":
         sound:
             enabled: true

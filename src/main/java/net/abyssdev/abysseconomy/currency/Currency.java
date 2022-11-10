@@ -6,6 +6,7 @@ import net.abyssdev.abysseconomy.AbyssEconomy;
 import net.abyssdev.abysseconomy.currency.command.CurrencyCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.commands.*;
+import net.abyssdev.abysseconomy.currency.multiplier.CurrencyMultiplierEvent;
 import net.abyssdev.abysseconomy.menu.CategoryMenu;
 import net.abyssdev.abysseconomy.menu.TopMenu;
 import net.abyssdev.abysseconomy.shop.Shop;
@@ -41,9 +42,9 @@ public final class Currency {
     private final TopMenu topMenu;
 
     private final Registry<String, Shop> shopRegistry;
+    private final CurrencyMultiplierEvent event;
 
     private final boolean solid;
-    private boolean event;
 
     /**
      * Constructs a new Currency
@@ -85,6 +86,8 @@ public final class Currency {
         this.command = new CurrencyCommand(plugin, this);
         this.command.register();
 
+        this.event = new CurrencyMultiplierEvent(this, this.config.getDouble("event-settings.gain-multiplier"));
+
         this.registerSubCommands(
                 new GiveSubCommand(plugin, this),
                 new HelpSubCommand(plugin, this),
@@ -102,11 +105,6 @@ public final class Currency {
             new TopUpdateTask(plugin, this, this.config.getInt("top.update-time") * 20L);
         }
 
-    }
-
-    public void toggleEvent() {
-        this.event = !this.event;
-        this.messageCache.getMessage("messages.event-" + this.event).broadcast();
     }
 
     private void registerSubCommands(final CurrencySubCommand... commands) {
