@@ -70,7 +70,7 @@ public final class WithdrawSubCommand extends CurrencySubCommand {
         this.currency.getMessageCache().sendMessage(sender, "messages.withdrawn", replacer);
 
         ItemStack item = this.item.parse(replacer);
-        item = NBTUtils.get().setString(item, "ABYSSECONOMY-WITHDRAW", this.currency.getName() + ";" + amount);
+        item = NBTUtils.get().setString(item, "ABYSSECONOMY_WITHDRAW", this.currency.getName() + ";" + amount);
 
         if (player.getInventory().firstEmpty() == -1) {
             player.getWorld().dropItem(player.getLocation(), item);

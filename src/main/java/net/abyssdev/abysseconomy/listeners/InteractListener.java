@@ -36,7 +36,8 @@ public final class InteractListener extends AbyssListener<AbyssEconomy> {
             return;
         }
 
-        final ItemStack item = event.getItem();
+        final Player player = event.getPlayer();
+        final ItemStack item = player.getItemInHand();
 
         if (item == null || item.getType() == Material.AIR) {
             return;
@@ -46,7 +47,6 @@ public final class InteractListener extends AbyssListener<AbyssEconomy> {
             return;
         }
 
-        final Player player = event.getPlayer();
         final String[] data = NBTUtils.get().getString(item, "ABYSSECONOMY_WITHDRAW").split(";");
 
         final Optional<Currency> optionalCurrency = this.getPlugin().getCurrencyRegistry().get(data[0]);
