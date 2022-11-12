@@ -41,7 +41,6 @@
                         </goals>
                         <configuration>
                             <finalName>AbyssEconomy-PRE</finalName>
-                            <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
