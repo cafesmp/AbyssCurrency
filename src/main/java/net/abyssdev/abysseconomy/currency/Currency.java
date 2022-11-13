@@ -100,7 +100,8 @@ public final class Currency {
                 new TopSubCommand(plugin, this),
                 new RecalcSubCommand(plugin, this),
                 new ShopSubCommand(plugin, this),
-                new WithdrawSubCommand(plugin, this));
+                new WithdrawSubCommand(plugin, this),
+                new ToggleSubCommand(plugin, this));
 
         if (this.config.getBoolean("top.enabled")) {
             new TopUpdateTask(plugin, this, this.config.getInt("top.update-time") * 20L);

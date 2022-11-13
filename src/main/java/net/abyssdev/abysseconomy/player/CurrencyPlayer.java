@@ -47,6 +47,11 @@ public final class CurrencyPlayer {
         data.setPaymentsToggled(!data.isPaymentsToggled());
     }
 
+    public void toggleMessages(final Currency currency) {
+        final PlayerCurrencyData data = this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData());
+        data.setMessagesToggled(!data.isMessagesToggled());
+    }
+
     public boolean isToggled(final Currency currency) {
         return this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).isPaymentsToggled();
     }

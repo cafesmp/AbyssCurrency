@@ -90,9 +90,11 @@ public final class BreakListener extends AbyssListener<AbyssEconomy> {
 
             profile.addCurrency(drop.getCurrency(), amount);
 
-            drop.getCurrency().getMessageCache().sendMessage(player, "blocks.message", new PlaceholderReplacer()
-                    .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
-                    .addPlaceholder("%block%", WordUtils.formatText(type.name().replace("_", " "))));
+            if (profile.getCurrencies().get(drop.getCurrency().getName()).isMessagesToggled()) {
+                drop.getCurrency().getMessageCache().sendMessage(player, "blocks.message", new PlaceholderReplacer()
+                        .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
+                        .addPlaceholder("%block%", WordUtils.formatText(type.name().replace("_", " "))));
+            }
 
             new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }

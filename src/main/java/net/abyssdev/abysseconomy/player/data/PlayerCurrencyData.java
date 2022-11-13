@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public final class PlayerCurrencyData {
 
-    private boolean paymentsToggled = true;
+    private boolean messagesToggled = true, paymentsToggled = true;
     private double amount;
 
     public PlayerCurrencyData add(final double amount) {

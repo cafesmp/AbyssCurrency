@@ -70,9 +70,11 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
 
             profile.addCurrency(drop.getCurrency(), amount);
 
-            drop.getCurrency().getMessageCache().sendMessage(player, "player-kill.message", new PlaceholderReplacer()
-                    .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
-                    .addPlaceholder("%player%", player.getName()));
+            if (profile.getCurrencies().get(drop.getCurrency().getName()).isMessagesToggled()) {
+                drop.getCurrency().getMessageCache().sendMessage(player, "player-kill.message", new PlaceholderReplacer()
+                        .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
+                        .addPlaceholder("%player%", player.getName()));
+            }
 
             new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
