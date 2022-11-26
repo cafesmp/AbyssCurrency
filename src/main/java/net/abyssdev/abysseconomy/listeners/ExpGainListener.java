@@ -62,7 +62,7 @@ public final class ExpGainListener extends AbyssListener<AbyssEconomy> {
                 amount *= drop.getCurrency().getEvent().getMultiplier();
             }
 
-            profile.addCurrency(drop.getCurrency(), amount);
+            profile.addCurrency(drop.getCurrency(), amount, CurrencyGainReason.NATURAL);
 
             if (profile.getCurrencies().get(drop.getCurrency().getName()).isMessagesToggled()) {
                 drop.getCurrency().getMessageCache().sendMessage(player, "on-exp-gain.message", new PlaceholderReplacer()

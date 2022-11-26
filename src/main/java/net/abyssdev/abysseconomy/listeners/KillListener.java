@@ -68,7 +68,7 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
                 amount *= drop.getCurrency().getEvent().getMultiplier();
             }
 
-            profile.addCurrency(drop.getCurrency(), amount);
+            profile.addCurrency(drop.getCurrency(), amount, CurrencyGainReason.NATURAL);
 
             if (profile.getCurrencies().get(drop.getCurrency().getName()).isMessagesToggled()) {
                 drop.getCurrency().getMessageCache().sendMessage(player, "player-kill.message", new PlaceholderReplacer()

@@ -1,6 +1,7 @@
 package net.abyssdev.abysseconomy.listeners;
 
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.utils.format.FormatUtil;
 import net.abyssdev.abysslib.listener.AbyssListener;
@@ -58,7 +59,7 @@ public final class InteractListener extends AbyssListener<AbyssEconomy> {
         final Currency currency = optionalCurrency.get();
         final double amount = Double.parseDouble(data[1]);
 
-        this.getPlugin().getPlayerStorage().get(player.getUniqueId()).addCurrency(currency, amount);
+        this.getPlugin().getPlayerStorage().get(player.getUniqueId()).addCurrency(currency, amount, CurrencyGainReason.NATURAL);
         currency.getMessageCache().sendMessage(player, "messages.redeemed", new PlaceholderReplacer()
                 .addPlaceholder("%amount%", FormatUtil.format(currency, amount)));
 
