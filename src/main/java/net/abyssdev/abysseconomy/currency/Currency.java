@@ -1,8 +1,8 @@
 package net.abyssdev.abysseconomy.currency;
 
 import lombok.Getter;
-import lombok.Setter;
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.command.CurrencyCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.commands.*;
@@ -13,8 +13,11 @@ import net.abyssdev.abysseconomy.shop.Shop;
 import net.abyssdev.abysseconomy.shop.registry.ShopRegistry;
 import net.abyssdev.abysseconomy.tasks.TopUpdateTask;
 import net.abyssdev.abysseconomy.utils.file.FileUtils;
+import net.abyssdev.abysslib.economy.provider.Economy;
+import net.abyssdev.abysslib.economy.registry.impl.DefaultEconomyRegistry;
 import net.abyssdev.abysslib.patterns.registry.Registry;
 import net.abyssdev.abysslib.text.MessageCache;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -26,9 +29,9 @@ import java.util.List;
  * @author Relocation
  */
 @Getter
-@Setter
-public final class Currency {
+public final class Currency implements Economy {
 
+    private final AbyssEconomy plugin;
     private final String name, baseCommand, commandDescription;
     private final List<String> aliases;
 
@@ -52,6 +55,7 @@ public final class Currency {
      * @param name The currency name taken from the file name without the file extension
      */
     public Currency(final AbyssEconomy plugin, final String name) {
+        this.plugin = plugin;
         this.name = name;
         this.configFile = new File(plugin.getCurrencyFolder(), name + ".yml");
 
@@ -107,6 +111,27 @@ public final class Currency {
             new TopUpdateTask(plugin, this, this.config.getInt("top.update-time") * 20L);
         }
 
+        DefaultEconomyRegistry.get().addEconomy(this);
+    }
+
+    @Override
+    public double getBalance(final OfflinePlayer offlinePlayer) {
+        return this.plugin.getPlayerStorage().get(offlinePlayer.getUniqueId()).getBalance(this);
+    }
+
+    @Override
+    public void addBalance(final OfflinePlayer offlinePlayer, final double v) {
+        this.plugin.getPlayerStorage().get(offlinePlayer.getUniqueId()).addCurrency(this, v, CurrencyGainReason.PLUGIN);
+    }
+
+    @Override
+    public void withdrawBalance(final OfflinePlayer offlinePlayer, final double v) {
+        this.plugin.getPlayerStorage().get(offlinePlayer.getUniqueId()).removeCurrency(this, v);
+    }
+
+    @Override
+    public boolean hasBalance(final OfflinePlayer offlinePlayer, final double v) {
+        return this.plugin.getPlayerStorage().get(offlinePlayer.getUniqueId()).hasBalance(this, v);
     }
 
     private void registerSubCommands(final CurrencySubCommand... commands) {

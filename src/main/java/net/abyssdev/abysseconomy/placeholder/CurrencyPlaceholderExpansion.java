@@ -66,7 +66,7 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
         switch (data[1].toLowerCase()) {
             default:
             case "formatted": {
-                return this.format(this.plugin.getPlayerStorage().get(player.getUniqueId()).getBalance(currency));
+                return this.format(currency, this.plugin.getPlayerStorage().get(player.getUniqueId()).getBalance(currency));
             }
 
             case "raw": {
@@ -76,7 +76,7 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
         }
     }
 
-    private String format(final double balance) {
+    private String format(final Currency currency, final double balance) {
         if (balance < 1000) {
             return FORMATTER.format(balance);
         } else if (balance < 1000000L) {
@@ -90,7 +90,7 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
         } else if (balance < 1000000000000000000L) {
             return FORMATTER.format(balance / 1000000000000000L) + QUADRILLIONS;
         }
-        return String.valueOf(balance);
+        return FormatUtil.format(currency, balance);
     }
 
 }

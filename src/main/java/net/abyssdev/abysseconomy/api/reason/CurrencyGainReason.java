@@ -8,6 +8,7 @@ public enum CurrencyGainReason {
 
     NATURAL,
     COMMAND,
-    PAID
+    PAID,
+    PLUGIN
 
 }

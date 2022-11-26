@@ -1,0 +1,19 @@
+messages:
+    "gained":
+        sound:
+            enabled: true
+            value: "LEVEL_UP"
+            volume: 1
+            pitch: 1
+        message:
+            enabled: true
+            value:
+                - "&3&m-------------------------------"
+                - " "
+                - "&b&lGained Currencies &8- &bLast 60s"
+                - "&7&oBelow you can find your &f&ogained currencies&7&o."
+                - " "
+                - "&b&lRESULTS:"
+                - "&b- &7Mobcoins: &f%mobcoins%"
+                - " "
+                - "&3&m-------------------------------"

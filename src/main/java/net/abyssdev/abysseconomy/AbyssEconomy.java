@@ -10,12 +10,14 @@ import net.abyssdev.abysseconomy.placeholder.CurrencyPlaceholderExpansion;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
 import net.abyssdev.abysseconomy.player.storage.PlayerJsonStorage;
 import net.abyssdev.abysseconomy.player.storage.PlayerMongoStorage;
+import net.abyssdev.abysseconomy.tasks.GainedTask;
 import net.abyssdev.abysseconomy.tasks.MultiplierEventTask;
 import net.abyssdev.abysseconomy.tasks.RotatingTask;
 import net.abyssdev.abysslib.patterns.registry.Registry;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
 import net.abyssdev.abysslib.plugin.AbyssPlugin;
 import net.abyssdev.abysslib.storage.Storage;
+import net.abyssdev.abysslib.text.MessageCache;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
@@ -39,6 +41,7 @@ public final class AbyssEconomy extends AbyssPlugin {
 
     private final Registry<String, Currency> currencyRegistry = new CurrencyRegistry();
     private final FileConfiguration settingsConfig = this.getConfig("settings");
+    private final MessageCache messageCache = new MessageCache(this.getConfig("lang"));
 
     private Storage<UUID, CurrencyPlayer> playerStorage;
     private File currencyFolder;
@@ -47,6 +50,7 @@ public final class AbyssEconomy extends AbyssPlugin {
     public void onEnable() {
         AbyssEconomy.instance = this;
 
+        this.loadMessages(this.messageCache, this.getConfig("lang"));
         this.currencyFolder = new File(this.getDataFolder(), "currencies");
 
         if (!this.currencyFolder.exists()) {
@@ -172,6 +176,7 @@ public final class AbyssEconomy extends AbyssPlugin {
 
         new RotatingTask(this);
         new MultiplierEventTask(this);
+        new GainedTask(this);
 
         if (this.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new CurrencyPlaceholderExpansion(this).register();
