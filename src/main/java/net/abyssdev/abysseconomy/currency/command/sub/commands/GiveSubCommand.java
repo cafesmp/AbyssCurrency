@@ -55,7 +55,7 @@ public final class GiveSubCommand extends CurrencySubCommand {
 
         final CurrencyPlayer profile = this.plugin.getPlayerStorage().get(target.getUniqueId());
 
-        profile.addCurrency(this.currency, amount);
+        profile.addCurrency(this.currency, amount, CurrencyGainReason.COMMAND);
 
         this.currency.getMessageCache().sendMessage(sender, "messages.given-admin", new PlaceholderReplacer()
                 .addPlaceholder("%player%", target.getName())

@@ -74,7 +74,7 @@ public final class PaySubCommand extends CurrencySubCommand {
         }
 
         playerProfile.removeCurrency(this.currency, amount);
-        targetProfile.addCurrency(this.currency, amount);
+        targetProfile.addCurrency(this.currency, amount, CurrencyGainReason.PAID);
 
         this.currency.getMessageCache().sendMessage(sender, "messages.paid", new PlaceholderReplacer()
                 .addPlaceholder("%player%", target.getName())
