@@ -34,14 +34,14 @@ public final class RotatingTask extends AbyssRunnable {
         for (final Currency currency : this.plugin.getCurrencyRegistry().values()) {
             for (final Shop shop : currency.getShopRegistry().values()) {
                 if (!(shop instanceof RotatingShop)) {
-                    return;
+                    continue;
                 }
 
                 final RotatingShop rotatingShop = (RotatingShop) shop;
 
                 if (rotatingShop.getTimeUntilRotation() > 0) {
                     rotatingShop.setTimeUntilRotation(rotatingShop.getTimeUntilRotation() - 1);
-                    return;
+                    continue;
                 }
 
                 final Date current = new Date();
@@ -50,7 +50,7 @@ public final class RotatingTask extends AbyssRunnable {
                 rotatingShop.setTimeUntilRotation(rotatingShop.getInterval());
 
                 if (!current.after(openTime)) {
-                    return;
+                    continue;
                 }
 
                 final PlaceholderReplacer replacer = new PlaceholderReplacer().addPlaceholder("%shop%", rotatingShop.getName());
