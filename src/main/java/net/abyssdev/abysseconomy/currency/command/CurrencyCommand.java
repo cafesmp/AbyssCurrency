@@ -3,6 +3,7 @@ package net.abyssdev.abysseconomy.currency.command;
 import net.abyssdev.abysseconomy.AbyssEconomy;
 import net.abyssdev.abysseconomy.currency.Currency;
 import net.abyssdev.abysseconomy.player.CurrencyPlayer;
+import net.abyssdev.abysslib.command.AbyssCommand;
 import net.abyssdev.abysslib.command.Command;
 import net.abyssdev.abysslib.command.context.CommandContext;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
@@ -14,7 +15,7 @@ import org.bukkit.entity.Player;
  * The currency command
  * @author Relocation
  */
-public final class CurrencyCommand extends Command<CommandSender> {
+public final class CurrencyCommand extends AbyssCommand<AbyssEconomy, CommandSender> {
 
     private final AbyssEconomy plugin;
     private final Currency currency;
@@ -24,7 +25,7 @@ public final class CurrencyCommand extends Command<CommandSender> {
      * @param currency The currency object
      */
     public CurrencyCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(currency.getBaseCommand(), currency.getCommandDescription(), currency.getAliases(), CommandSender.class);
+        super(plugin, currency.getBaseCommand(), currency.getCommandDescription(), currency.getAliases(), CommandSender.class);
 
         this.plugin = plugin;
         this.currency = currency;

@@ -10,8 +10,6 @@ import net.abyssdev.abysslib.utils.Utils;
 import org.bukkit.command.CommandSender;
 import org.eclipse.collections.api.factory.Sets;
 
-import java.util.Set;
-
 /**
  * The event sub command
  *
@@ -19,20 +17,13 @@ import java.util.Set;
  */
 public final class EventSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("event").castToSet();
-
     /**
      * Constructs a new EventSubCommand
      *
      * @param plugin The abyss economy plugin
      */
     public EventSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency, 0, currency.getConfig().getBoolean("sub-commands.event"), "admin-help");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
+        super(plugin, currency, 0, currency.getConfig().getBoolean("sub-commands.event"), "admin-help", Sets.immutable.of("event"));
     }
 
     @Override

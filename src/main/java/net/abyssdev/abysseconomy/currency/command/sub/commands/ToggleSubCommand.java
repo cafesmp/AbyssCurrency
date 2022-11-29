@@ -19,19 +19,19 @@ import java.util.logging.Level;
  */
 public final class ToggleSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("toggle", "togglemessages", "togglemsgs").castToSet();
-
     /**
      * Constructs a new RecalcSubCommand
      * @param plugin The abyss economy plugin
      */
     public ToggleSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency,0, currency.getConfig().getBoolean("sub-commands.toggle"), "admin-help");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
+        super(
+                plugin,
+                currency,
+                0,
+                currency.getConfig().getBoolean("sub-commands.toggle"),
+                "admin-help",
+                Sets.immutable.of("toggle", "togglemessages", "togglemsgs")
+        );
     }
 
     @Override

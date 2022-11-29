@@ -19,14 +19,17 @@ import java.util.logging.Level;
  */
 public final class PayToggleSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("togglepay", "paytoggle").castToSet();
-
     /**
      * Constructs a new PayToggleSubCommand
      * @param plugin The abyss economy plugin
      */
     public PayToggleSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency,0, currency.getConfig().getBoolean("sub-commands.paytoggle"), "player-help");
+        super(plugin,
+                currency,
+                0,
+                currency.getConfig().getBoolean("sub-commands.paytoggle"),
+                "player-help",
+                Sets.immutable.of("togglepay", "paytoggle"));
     }
 
     @Override

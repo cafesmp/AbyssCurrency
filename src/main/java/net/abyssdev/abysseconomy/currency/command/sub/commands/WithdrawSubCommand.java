@@ -15,31 +15,33 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.eclipse.collections.api.factory.Sets;
 
-import java.util.Set;
 import java.util.logging.Level;
 
 /**
  * The withdraw sub command
+ *
  * @author Relocation
  */
 public final class WithdrawSubCommand extends CurrencySubCommand {
 
     private final ItemBuilder item;
-    private final Set<String> aliases = Sets.immutable.of("withdraw").castToSet();
 
     /**
      * Constructs a new WithdrawSubCommand
+     *
      * @param plugin The abyss economy plugin
      */
     public WithdrawSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency, 1, currency.getConfig().getBoolean("sub-commands.withdraw"), "admin-help");
+        super(
+                plugin,
+                currency,
+                1,
+                currency.getConfig().getBoolean("sub-commands.withdraw"),
+                "admin-help",
+                Sets.immutable.of("withdraw")
+        );
 
         this.item = new ItemBuilder(currency.getConfig(), "withdraw-item");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
     }
 
     @Override

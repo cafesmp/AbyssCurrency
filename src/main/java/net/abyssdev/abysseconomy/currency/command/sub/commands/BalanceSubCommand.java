@@ -24,19 +24,17 @@ import java.util.logging.Level;
  */
 public final class BalanceSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("bal", "balance").castToSet();
-
     /**
      * Constructs a new BalanceSubCommand
      * @param plugin The abyss economy plugin
      */
     public BalanceSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency, 0, currency.getConfig().getBoolean("sub-commands.balance"), "player-help");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
+        super(plugin,
+                currency,
+                0,
+                currency.getConfig().getBoolean("sub-commands.balance"),
+                "player-help",
+                Sets.immutable.of("bal", "balance"));
     }
 
     @Override

@@ -56,6 +56,7 @@ public final class GainedTask extends AbyssTask<AbyssEconomy> {
             }
 
             this.plugin.getMessageCache().sendMessage(player, "messages.gained", replacer);
+            profile.getLastSixtySeconds().clear();
         }
     }
 

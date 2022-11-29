@@ -18,19 +18,12 @@ import java.util.Set;
  */
 public final class TakeSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("take").castToSet();
-
     /**
      * Constructs a new TakeSubCommand
      * @param plugin The abyss economy plugin
      */
     public TakeSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency,2, currency.getConfig().getBoolean("sub-commands.take"), "admin-help");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
+        super(plugin, currency,2, currency.getConfig().getBoolean("sub-commands.take"), "admin-help", Sets.immutable.of("take"));
     }
 
     @Override

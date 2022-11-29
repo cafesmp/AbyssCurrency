@@ -9,7 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.eclipse.collections.api.factory.Sets;
 
-import java.util.Set;
 import java.util.logging.Level;
 
 /**
@@ -18,19 +17,19 @@ import java.util.logging.Level;
  */
 public final class TopSubCommand extends CurrencySubCommand {
 
-    private final Set<String> aliases = Sets.immutable.of("top").castToSet();
-
     /**
      * Constructs a new TopSubCommand
      * @param plugin The abyss economy plugin
      */
     public TopSubCommand(final AbyssEconomy plugin, final Currency currency) {
-        super(plugin, currency,0, currency.getConfig().getBoolean("sub-commands.top"), "player-help");
-    }
-
-    @Override
-    public Set<String> aliases() {
-        return this.aliases;
+        super(
+                plugin,
+                currency,
+                0,
+                currency.getConfig().getBoolean("sub-commands.top"),
+                "player-help",
+                Sets.immutable.of("top")
+        );
     }
 
     @Override
