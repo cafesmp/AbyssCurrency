@@ -10,6 +10,7 @@ import net.abyssdev.abysseconomy.utils.RandomUtils;
 import net.abyssdev.abysseconomy.utils.format.FormatUtil;
 import net.abyssdev.abysslib.listener.AbyssListener;
 import net.abyssdev.abysslib.placeholder.PlaceholderReplacer;
+import net.abyssdev.abysslib.team.utils.TeamUtils;
 import net.abyssdev.abysslib.utils.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -71,11 +72,11 @@ public final class BreakListener extends AbyssListener<AbyssEconomy> {
 
         final Player player = event.getPlayer();
 
-        if (player == null) {
+        if (!TeamUtils.get().canBreak(player, event.getBlock().getLocation())) {
             return;
         }
 
-        final CurrencyPlayer profile = this.getPlugin().getPlayerStorage().get(player.getUniqueId());
+        final CurrencyPlayer profile = this.plugin.getPlayerStorage().get(player.getUniqueId());
 
         for (final CurrencyDrop drop : this.drops.get(type)) {
             if (drop.getChance() < ThreadLocalRandom.current().nextDouble(100)) {
