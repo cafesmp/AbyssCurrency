@@ -148,5 +148,4 @@ public final class RotatingShop extends Shop {
     public void setTimeUntilRotation(final int time) {
         this.time = time;
     }
-
 }

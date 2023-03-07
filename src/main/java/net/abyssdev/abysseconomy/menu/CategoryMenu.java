@@ -78,5 +78,4 @@ public final class CategoryMenu extends AbyssMenu {
 
         player.openInventory(builder.build(player, this.plugin.getPlaceholders()));
     }
-
 }

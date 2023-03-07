@@ -19,5 +19,4 @@ public final class PlayerRegistry implements Registry<UUID, CurrencyPlayer> {
     public Map<UUID, CurrencyPlayer> getRegistry() {
         return this.players;
     }
-
 }

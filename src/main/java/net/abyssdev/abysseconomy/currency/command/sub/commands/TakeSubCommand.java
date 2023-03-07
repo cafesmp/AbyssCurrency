@@ -52,5 +52,4 @@ public final class TakeSubCommand extends CurrencySubCommand {
         this.currency.getMessageCache().sendMessage(target, "messages.taken-player", new PlaceholderReplacer()
                 .addPlaceholder("%amount%", FormatUtil.format(this.currency, amount)));
     }
-
 }

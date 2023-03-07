@@ -18,5 +18,4 @@ public final class CurrencyRegistry implements Registry<String, Currency> {
     public Map<String, Currency> getRegistry() {
         return this.currencies;
     }
-
 }

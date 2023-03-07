@@ -26,5 +26,4 @@ public final class PlayerJsonStorage extends JsonStorage<UUID, CurrencyPlayer> {
     public CurrencyPlayer constructValue(final UUID key) {
         return new CurrencyPlayer(key);
     }
-
 }

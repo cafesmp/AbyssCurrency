@@ -33,5 +33,4 @@ public final class ShopRegistry implements Registry<String, Shop> {
     public Map<String, Shop> getRegistry() {
         return this.shops;
     }
-
 }

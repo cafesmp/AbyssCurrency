@@ -65,5 +65,4 @@ public final class CurrencyPlayer {
     public boolean isToggled(final Currency currency) {
         return this.currencies.getOrDefault(currency.getName(), new PlayerCurrencyData()).isPaymentsToggled();
     }
-
 }

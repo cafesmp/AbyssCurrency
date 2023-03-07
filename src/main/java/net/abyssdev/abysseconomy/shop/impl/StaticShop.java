@@ -76,5 +76,4 @@ public final class StaticShop extends Shop {
 
         player.openInventory(builder.build(player, this.plugin.getPlaceholders()));
     }
-
 }

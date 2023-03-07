@@ -68,5 +68,4 @@ public final class FileUtils {
         connection.setUseCaches(false);
         return connection.getInputStream();
     }
-
 }

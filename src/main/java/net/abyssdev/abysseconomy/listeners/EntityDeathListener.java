@@ -101,5 +101,4 @@ public final class EntityDeathListener extends AbyssListener<AbyssEconomy> {
         }
 
     }
-
 }

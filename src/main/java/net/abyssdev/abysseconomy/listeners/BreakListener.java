@@ -101,5 +101,4 @@ public final class BreakListener extends AbyssListener<AbyssEconomy> {
         }
 
     }
-
 }

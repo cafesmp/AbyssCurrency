@@ -92,5 +92,4 @@ public final class CurrencyPlaceholderExpansion extends PlaceholderExpansion {
         }
         return FormatUtil.format(currency, balance);
     }
-
 }

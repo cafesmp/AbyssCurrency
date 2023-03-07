@@ -26,5 +26,4 @@ public final class CurrencyMultiplierEvent {
         this.active = false;
         this.currency.getMessageCache().getMessage("messages.event-false").broadcast();
     }
-
 }

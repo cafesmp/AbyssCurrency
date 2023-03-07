@@ -20,5 +20,4 @@ public final class CategoryItem {
         this.slot = config.getInt(path + ".slot");
         this.name = name;
     }
-
 }

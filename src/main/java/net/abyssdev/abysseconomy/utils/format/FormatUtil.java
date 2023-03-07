@@ -18,5 +18,4 @@ public final class FormatUtil {
 
         return Utils.format(amount);
     }
-
 }

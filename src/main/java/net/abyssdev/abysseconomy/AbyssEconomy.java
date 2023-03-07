@@ -202,5 +202,4 @@ public final class AbyssEconomy extends AbyssPlugin {
     public static AbyssEconomy get() {
         return AbyssEconomy.instance;
     }
-
 }

@@ -47,5 +47,4 @@ public final class CurrencyCommand extends AbyssCommand<AbyssEconomy, CommandSen
                         ? (long) profile.getBalance(this.currency)
                         : profile.getBalance(this.currency))));
     }
-
 }

@@ -31,5 +31,4 @@ public final class AbyssEconomyAPI {
     public Currency getCurrency(final String currency) {
         return AbyssEconomy.get().getCurrencyRegistry().get(currency).orElse(null);
     }
-
 }

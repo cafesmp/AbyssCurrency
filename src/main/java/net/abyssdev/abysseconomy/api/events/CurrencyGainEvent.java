@@ -38,5 +38,4 @@ public final class CurrencyGainEvent extends Event {
     public void fire(final AbyssEconomy plugin) {
         plugin.getServer().getPluginManager().callEvent(this);
     }
-
 }

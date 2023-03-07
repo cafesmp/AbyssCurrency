@@ -31,5 +31,4 @@ public final class MultiplierEventTask extends AbyssRunnable {
             currency.getEvent().end();
         }
     }
-
 }

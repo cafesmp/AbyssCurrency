@@ -80,5 +80,4 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
         }
 
     }
-
 }

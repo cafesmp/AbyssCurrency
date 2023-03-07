@@ -27,5 +27,4 @@ public final class TopUpdateTask extends AbyssRunnable {
     public void run() {
         this.currency.getTopMenu().recalculate();
     }
-
 }

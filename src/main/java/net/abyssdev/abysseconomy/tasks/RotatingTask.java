@@ -63,5 +63,4 @@ public final class RotatingTask extends AbyssRunnable {
             }
         }
     }
-
 }

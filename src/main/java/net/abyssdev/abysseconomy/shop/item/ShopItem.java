@@ -37,5 +37,4 @@ public final class ShopItem {
         this.price = config.getInt(path + ".price");
         this.commands = config.getStringList(path + ".commands").toArray(new String[0]);
     }
-
 }

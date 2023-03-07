@@ -29,5 +29,4 @@ public final class PlayerMongoStorage extends MongoStorage<UUID, CurrencyPlayer>
     public CurrencyPlayer constructValue(final UUID key) {
         return new CurrencyPlayer(key);
     }
-
 }

@@ -59,5 +59,4 @@ public final class GainedTask extends AbyssTask<AbyssEconomy> {
             profile.getLastSixtySeconds().clear();
         }
     }
-
 }

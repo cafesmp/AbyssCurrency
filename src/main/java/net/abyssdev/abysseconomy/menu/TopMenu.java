@@ -128,5 +128,4 @@ public final class TopMenu extends AbyssMenu {
                 && builder.getSkull() != null
                 && builder.getSkull().equalsIgnoreCase("%player%");
     }
-
 }
