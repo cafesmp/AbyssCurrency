@@ -73,7 +73,7 @@ public final class ExpLevelUpListener extends AbyssListener<AbyssEconomy> {
                         .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount)));
             }
 
-            new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
+            new CurrencyGainEvent(player, drop.getCurrency().getImplementation(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
 
     }

@@ -97,7 +97,7 @@ public final class BreakListener extends AbyssListener<AbyssEconomy> {
                         .addPlaceholder("%block%", WordUtils.formatText(type.name().replace("_", " "))));
             }
 
-            new CurrencyGainEvent(player, drop.getCurrency(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
+                new CurrencyGainEvent(player, drop.getCurrency().getImplementation(), profile, CurrencyGainReason.NATURAL, amount).fire(this.getPlugin());
         }
 
     }

@@ -2,6 +2,7 @@ package net.abyssdev.abysseconomy.currency;
 
 import lombok.Getter;
 import net.abyssdev.abysseconomy.AbyssEconomy;
+import net.abyssdev.abysseconomy.api.currency.CommonCurrencyImpl;
 import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.command.CurrencyCommand;
 import net.abyssdev.abysseconomy.currency.command.sub.CurrencySubCommand;
@@ -49,6 +50,8 @@ public final class Currency implements Economy {
 
     private final boolean solid;
 
+    private final CommonCurrencyImpl implementation;
+
     /**
      * Constructs a new Currency
      * @param plugin The abyss economy plugin
@@ -58,6 +61,8 @@ public final class Currency implements Economy {
         this.plugin = plugin;
         this.name = name;
         this.configFile = new File(plugin.getCurrencyFolder(), name + ".yml");
+
+        this.implementation = new CommonCurrencyImpl(this);
 
         if (!this.configFile.exists()) {
             FileUtils.copy(FileUtils.getInputFromJar("mobcoins.yml"), this.configFile);
