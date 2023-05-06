@@ -1,10 +1,12 @@
 package net.abyssdev.abysseconomy.api.currency;
 
+import lombok.Getter;
 import net.abyssdev.abysseconomy.api.reason.CurrencyGainReason;
 import net.abyssdev.abysseconomy.currency.Currency;
 import org.bukkit.OfflinePlayer;
 
 //TEMPORARY CLASS MADE FOR OBFUSCATION
+@Getter
 public final class CommonCurrencyImpl {
 
     private final Currency currency;
