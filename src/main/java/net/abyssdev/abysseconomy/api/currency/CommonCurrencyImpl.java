@@ -34,7 +34,5 @@ public final class CommonCurrencyImpl {
     public boolean hasBalance(final OfflinePlayer offlinePlayer, final double v) {
         return this.currency.getPlugin().getPlayerStorage().get(offlinePlayer.getUniqueId()).hasBalance(this.currency, v);
     }
-
-
-
+    
 }

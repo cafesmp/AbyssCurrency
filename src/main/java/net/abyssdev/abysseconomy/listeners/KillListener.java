@@ -55,7 +55,7 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
             return;
         }
 
-        final CurrencyPlayer profile = this.getPlugin().getPlayerStorage().get(attacker.getUniqueId());
+        final CurrencyPlayer profile = this.plugin.getPlayerStorage().get(attacker.getUniqueId());
 
         for (final CurrencyDrop drop : this.drops) {
             if (drop.getChance() < ThreadLocalRandom.current().nextDouble(100)) {
@@ -71,7 +71,7 @@ public final class KillListener extends AbyssListener<AbyssEconomy> {
             profile.addCurrency(drop.getCurrency(), amount, CurrencyGainReason.NATURAL);
 
             if (profile.getCurrencies().get(drop.getCurrency().getName()).isMessagesToggled()) {
-                drop.getCurrency().getMessageCache().sendMessage(player, "player-kill.message", new PlaceholderReplacer()
+                drop.getCurrency().getMessageCache().sendMessage(attacker, "player-kill.message", new PlaceholderReplacer()
                         .addPlaceholder("%amount%", FormatUtil.format(drop.getCurrency(), amount))
                         .addPlaceholder("%player%", player.getName()));
             }
